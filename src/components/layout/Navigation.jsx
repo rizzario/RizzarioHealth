@@ -28,7 +28,7 @@ const NavigationContainer = styled.nav
         gap: 8px;
         width: 100%;
         height: auto;
-        position: absolute;
+        position: relative;
         padding: 0;
         align-items: center;
         background-color: var(--green);
