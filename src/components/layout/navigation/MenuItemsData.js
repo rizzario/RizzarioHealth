@@ -18,6 +18,16 @@ export const menuItemsData = [
     },
     {
       title: 'Drug & Supplements',
+      submenu: [
+        {
+          title: 'Drugs',
+          url: 'drugs',
+        },
+        {
+          title: 'Supplements',
+          url: 'supplements',
+        }
+      ]
     },
     {
       title: 'Well-Being',

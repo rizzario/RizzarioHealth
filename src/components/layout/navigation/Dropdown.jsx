@@ -1,29 +1,66 @@
-import styled from "styled-components";
-import React from "react";
+import styled, { 
+    keyframes, 
+} from "styled-components";
+import {
+    Link,
+} from 'react-router-dom';
+import React, {
+    useState
+} from "react";
+
+const slideRight = keyframes
+    `
+        from {
+            transform: translateX(-25%);
+        }
+        to {
+            transform: translateX(0%);
+        }
+    `;
 
 const NavigationGroupDropdown = styled.div
-`
-    display: ${props => (props.dropdown ? 'block' : 'none')};
-    position: absolute;
-    background-color: black;
-    top: 98px;
-    width: 100vw;
-    left: 0;
-    padding: 1rem 1.5rem;
-    z-index: 3;
-`;
+    `
+        position: absolute;
+        background-color: black;
+        top: 50px;
+        min-width: 160px;
+        height: auto;
+        padding: 1rem 1.5rem;
+        display: ${({isdropdown}) => (isdropdown ? 'block' : 'none')};
+        z-index: 5;
+        opacity: ${({isdropdown}) => (isdropdown ? '1' : '0')};
+        animation: ${slideRight} 0.2s;
+    `;
+const ButtonDropdown = styled(Link)
+    `
+        display: block;
+        float: none;
+        padding: 12px 16px;
+        color: white;
+    `;
 
-const Dropdown = ({ submenus, isDropdown }) => {
-    const dropdown = isDropdown;
+const Dropdown = ({ submenus, isdropdown }) => {
+
+    const MouseEnter = () => {
+        isdropdown = 1;
+    };
+    const MouseLeave = () => {
+        isdropdown = !isdropdown;
+    };
+
     return (
-        <NavigationGroupDropdown dropdown={dropdown ? 1 : 0} >
-            <ul className="dropdown">
-                {submenus.map((submenu, index) => (
-                    <li key={index} className="dropdown">
-                        <a href={submenu.url}>{submenu.title}</a>
-                    </li>
-                ))}
-            </ul>
+        <NavigationGroupDropdown
+            isdropdown={isdropdown ? 1 : 0}
+            onMouseEnter={MouseEnter} 
+            onMouseLeave={MouseLeave}
+        >
+            {submenus.map((submenu, index) => (
+                <ButtonDropdown 
+                    to={submenu.url} 
+                    key={index}>
+                    {submenu.title}
+                </ButtonDropdown>
+            ))}
         </NavigationGroupDropdown>
     );
 };

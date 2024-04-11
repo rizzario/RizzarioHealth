@@ -39,6 +39,7 @@ body {
   margin: 0;
   line-height: 1.5;
   color: #121212;
+  overflow-x: hidden;
 }
 textarea,
 input,
@@ -200,6 +201,7 @@ form[action$="destroy"] button {
 
 .appear-toggle {
   opacity: 0;
+  display: none;
 }
 
 #sidebar > div form input[type="search"].loading,

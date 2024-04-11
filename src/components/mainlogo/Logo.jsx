@@ -14,6 +14,7 @@ const LogoContainer = styled.div
     `
         display: flex;
         flex-direction: columns;
+        padding-top: 12px;
     `;
 
 const HeavyLogo = styled.div

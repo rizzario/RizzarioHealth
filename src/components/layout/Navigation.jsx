@@ -28,79 +28,75 @@ const NavigationContainer = styled.nav
         gap: 8px;
         width: 100%;
         height: auto;
-        position: relative;
-        padding: 10px 4%;
+        position: absolute;
+        padding: 0;
         align-items: center;
         background-color: var(--green);
+        z-index: 5;
+    `;
+
+const NavContainer = styled.div
+    `
+        display: flex;
+        margin: 0 5%;
+        width: 100%;
+        height: 50px;
     `;
 
 const LinkContainer = styled.div
     `
+        position: relative;
+        width: 55%;
+    `;
+
+const ContactContainer = styled.div
+    `
+        position: relative;
+        width: 45%;
         display: flex;
-        justify-content: center;
-        width: 100%;
+        margin-top: 2px;
     `;
 
 const UnsortLink = styled.ul
     `
         list-style: none;
         padding: 0;
-        margin: 0 auto;
+        margin: 0 4%;
+        position: absolute;
     `;
-
-// const ListLink = styled.li
-//     `
-//         display: inline-flex;
-//         padding: 0 5px;
-//     `;
-
-// const GroupButton = styled(Link)
-//     `
-//         font-family: "Open Sans", sans-serif;
-//         font-optical-sizing: auto;
-//         font-weight: 600;
-//         font-style: normal;
-//         font-size: 18px;
-//         color: white;
-//         text-decoration: none;
-//         padding: 5px;
-//     `;
-
-// const ButtonDiv = styled.div
-//     `
-//         display: flex;
-//         align-items: center;
-//         gap: 5px;
-//     `;
-
-const SearchContainer = styled(Form)
+    // display: ${props => props.isshowform
+    //     ? `flex`
+    //     : `none`};
+const SearchForm = styled(Form)
     `
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        width: 38%;
+        width: ${props => props.isshowform
+            ? `85%`
+            : `0`};;
         position: absolute;
         gap: 5px;
         transition: 0.5s all ease;
-        right: 9%;
-        top: 48%;
+        right: 14%;
     `;
-
-const ContactContainer = styled.div
+const SearchFormIcon = styled.input
     `
-        width: 48%;
-        display: flex;
-        justify-content: flex-end;
+        display: ${props => props.isshowform
+            ? `block`
+            : `none`};
     `;
 
 const ButtonImageSearch = styled.div
     `
+        margin-top: 3px;
         right: 5%;
         padding: 2px;
         position: absolute;
         background-image: ${props => props.isshowform 
             ? `url(${searchLogo})` 
             : `url(${crossLogo})`};
+        transition: background-image: 0.5s ease;
         background-position: center;
         background-repeat: no-repeat;
         height: 2rem;
@@ -126,56 +122,58 @@ export default function Navigation() {
     // const navigation = useNavigation();
     const searching = navigation.location && new URLSearchParams(navigation.location.search).has("s");
     const submit = useSubmit();
-    const [isshowform, toggleForm] = useState(true);
+    const [isshowform, toggleForm] = useState(false);
 
     const setToggleForm = () => {
         toggleForm(!isshowform);
     }
-    <StyleSheetManager shouldForwardProp={isshowform} />
+    
 
     return(
         <>
             <NavigationContainer>
                 <Logo />
-                <LinkContainer id="navigation-tab">
-                    <UnsortLink id="navigation-tab-group-btn">
-                        {menuItemsData.map((menu, index) => {
-                            return <MenuItems items={menu} key={index} />;
-                        })}
-                    </UnsortLink>
-                    <SearchContainer 
-                        id="rizzario-search-form" 
-                        role="search"
-                        // style={{opacity: showform ? '1':'0' }}
-                        className={isshowform ? "appear-toggle" : ""}
-                    >
-                        <input
-                            id="search"
-                            className={searching? "loading" : ""}
-                            aria-label="Search"
-                            placeholder="Search RizzarioHealth"
-                            type="search"
-                            name="s"
-                            defaultValue={s}
-                            onChange={(event) => {
-                                const isFirstSearch = s == null;
-                                // submit(event.currentTarget.form, { replace: !isFirstSearch, })
-                            }}
-                        />
-                        <div 
-                            id="nav-search-spinner" 
-                            aria-hidden hidden={!searching} 
-                        />
-                        <div className="sr-only" aria-live="polite"></div>
-                    </SearchContainer>
-                    <ContactContainer>
+                <NavContainer id="navigation-tab">
+                    <LinkContainer>
+                        <UnsortLink id="navigation-tab-group-btn">
+                            {menuItemsData.map((menu, index) => {
+                                return <MenuItems items={menu} key={index} />;
+                            })}
+                        </UnsortLink>
+                    </LinkContainer>
+                    <ContactContainer id="Test">
+                        <SearchForm 
+                            id="rizzario-search-form" 
+                            role="search"
+                            isshowform={isshowform ? 1 : 0}
+                        >
+                            <SearchFormIcon
+                                id="search"
+                                className={searching? "loading" : ""}
+                                isshowform={isshowform ? 1 : 0}
+                                aria-label="Search"
+                                placeholder="Search RizzarioHealth"
+                                type="search"
+                                name="s"
+                                defaultValue={s}
+                                onChange={(event) => {
+                                    const isFirstSearch = s == null;
+                                    // submit(event.currentTarget.form, { replace: !isFirstSearch, })
+                                }}
+                            />
+                            <div 
+                                id="nav-search-spinner" 
+                                aria-hidden hidden={!searching} 
+                            />
+                            <div className="sr-only" aria-live="polite"></div>
+                        </SearchForm>
                         <ButtonImageSearch 
                             id="search-icon"
                             onClick={setToggleForm}
-                            isshowform={isshowform ? 1 : 0}
+                            isshowform={isshowform ? 0 : 1}
                         />
                     </ContactContainer>
-                </LinkContainer>
+                </NavContainer>
             </NavigationContainer>
             <Outlet />
         </>
