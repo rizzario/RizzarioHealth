@@ -1,67 +1,8 @@
 import {
-    Link,
-} from "react-router-dom";
-import {
     useState,
     useRef,
 } from "react";
 import Dropdown from "./Dropdown";
-import styled, {
-    keyframes,
-} from "styled-components";
-
-const ListLink = styled.li
-    `
-        display: inline-flex;
-        padding: 0 8px;
-        flex-direction: column;
-    `;
-
-const DropdownContainer = styled.div
-    `
-        float: left;
-        overflow: hidden;
-    `;
-
-const animateHighlight = keyframes
-    `
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 200% 0;
-    }
-    `;
-
-const GroupButton = styled.button
-    `
-        font-family: "Open Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 600;
-        font-style: normal;
-        font-size: 18px;
-        color: white;
-        background: inherit;
-        outline: none;
-        text-decoration: none;
-        border: none;
-        box-shadow: none;
-        padding: 5px;
-        margin: 0;
-        height: 50px;
-
-        &:hover {
-            box-shadow: none;
-            color: black;
-        }
-    `;
-
-const ButtonDiv = styled.div
-    `
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    `;
 
 const MenuItems = ({ items }) => {
 
@@ -83,23 +24,24 @@ const MenuItems = ({ items }) => {
     };
 
     return (
-        <ListLink >
+        <li className="inline-flex flex-column px-2">
             {items.submenu ? (
                 <>
-                    <DropdownContainer
+                    <div
+                        className="float-left overflow-hidden"
                         onMouseEnter={MouseEnter}
                         onMouseLeave={MouseLeave}
                     >
-                    <GroupButton 
+                    <button 
                         to={items.url} 
                         className="navigation-tab-btn"
                         aria-expanded={isdropdown ? "true" : "false"} 
                         onMouseEnter={MouseEnter} >
-                        <ButtonDiv>
+                        <div className="flex items-center gap-1">
                             {items.title}
                             <i className="fa-solid fa-chevron-down" id="chevron-down" />
-                        </ButtonDiv>
-                    </GroupButton>
+                        </div>
+                    </button>
                     {/* {isdropdown && ( */}
                         <Dropdown 
                             submenus={items.submenu}
@@ -108,16 +50,21 @@ const MenuItems = ({ items }) => {
                             renderMenuOnMount={false}
                         />
                     {/* )} */}
-                    </DropdownContainer>
+                    </div>
                 </>
             ) : (
-                <GroupButton to={items.url} className="navigation-tab-btn">
-                    <ButtonDiv>
-                        {items.title}
-                    </ButtonDiv>
-                </GroupButton>
+                <>
+                    <div className="float-left overflow-hidden">
+                        <button to={items.url} 
+                            className="navigation-tab-btn" >
+                            <div className="flex items-center gap-1">
+                                {items.title}
+                            </div>
+                        </button>
+                    </div>
+                </>
             )}
-        </ListLink>
+        </li>
     );
 };
 

@@ -8,16 +8,11 @@ import {
 } from "react-router-dom";
 import { useState } from "react";
 import styled from "styled-components";
-import {
-    searchLogo,
-    crossLogo,
-} from "../../Images/images";
 import Logo from "../mainlogo/Logo";
 import { menuItemsData } from "./navigation/MenuItemsData";
 import MenuItems from "./navigation/MenuItems";
 import { getContacts } from "../../pages/contact/contacts";
 import isPropValid from '@emotion/is-prop-valid';
-import { StyleSheetManager } from 'styled-components';
 
 //Set Style component
 const NavigationContainer = styled.nav
@@ -64,9 +59,6 @@ const UnsortLink = styled.ul
         margin: 0 4%;
         position: absolute;
     `;
-    // display: ${props => props.isshowform
-    //     ? `flex`
-    //     : `none`};
 const SearchForm = styled(Form)
     `
         display: flex;
@@ -85,22 +77,6 @@ const SearchFormIcon = styled.input
         display: ${props => props.isshowform
             ? `block`
             : `none`};
-    `;
-
-const ButtonImageSearch = styled.div
-    `
-        margin-top: 3px;
-        right: 5%;
-        padding: 2px;
-        position: absolute;
-        background-image: ${props => props.isshowform 
-            ? `url(${searchLogo})` 
-            : `url(${crossLogo})`};
-        transition: background-image: 0.5s ease;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 2rem;
-        width: 2rem;
     `;
 
 // export async function loader( {request} ) {
@@ -149,8 +125,8 @@ export default function Navigation() {
                         >
                             <SearchFormIcon
                                 id="search"
-                                className={searching? "loading" : ""}
-                                isshowform={isshowform ? 1 : 0}
+                                className={`${isshowform ? 'form-disp':''} ${searching ? 'form-loading' : ''}`}
+                                isshowform={isshowform}
                                 aria-label="Search"
                                 placeholder="Search RizzarioHealth"
                                 type="search"
@@ -167,11 +143,11 @@ export default function Navigation() {
                             />
                             <div className="sr-only" aria-live="polite"></div>
                         </SearchForm>
-                        <ButtonImageSearch 
+                        <div 
                             id="search-icon"
+                            className={`imagesearch ${isshowform ? 'crossLogo' : 'searchLogo'}`}
                             onClick={setToggleForm}
-                            isshowform={isshowform ? 0 : 1}
-                        />
+                            isshowform={isshowform ? 0 : 1} />
                     </ContactContainer>
                 </NavContainer>
             </NavigationContainer>

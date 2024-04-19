@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
   box-sizing: border-box;
   /* Color theme */
@@ -128,14 +132,45 @@ form[action$="destroy"] button {
   position: relative;
 }
 
+.navigation-group-dropdown {
+  @apply absolute bg-black min-w-[160px] px-4 py-6 z-10 transition duration-200;
+}
+.dropdown-appear {
+  @apply visible opacity-100 !translate-x-0;
+}
+.dropdown-hidden {
+  @apply invisible opacity-0 -translate-x-1/4;
+}
+
 #chevron-down {
   color: white;
   font-size: 14px;
   transition: 0.3s ease;
 }
-.navigation-tab-btn > div:hover > i {
+.navigation-tab-btn {
+  @apply font-sans text-18I bg-inherit text-white no-underline p-1.5 m-0 h-12 hover:text-black shadow-none outline-none border-none;
+}
+.navigation-tab-btn:hover > div > i {
   transform: rotate(180deg);
-} 
+  color: black !important;
+}
+
+.form-loading {
+  @apply bg-none invisible;
+}
+.form-disp {
+  @apply visible;
+}
+
+.imagesearch {
+  @apply absolute mt-1 p-1 right-[5%] bg-center bg-no-repeat h-8 w-8;
+}
+.searchLogo {
+  @apply bg-[url("./src/Images/search.png")];
+}
+.crossLogo {
+  @apply bg-[url("./src/Images/cross.png")];
+}
 
 #addnew {
   display: flex;
@@ -204,8 +239,7 @@ form[action$="destroy"] button {
   display: none;
 }
 
-#sidebar > div form input[type="search"].loading,
-#root > nav form input[type="search"].loading {
+#sidebar > div form input[type="search"].loading {
   background-image: none;
 }
 

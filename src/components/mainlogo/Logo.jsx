@@ -1,50 +1,21 @@
 import { 
     Link,
-    Outlet } from "react-router-dom";
-import styled from "styled-components";
+} from "react-router-dom";
 import { mainLogo } from "../../Images/images";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const LogoButton = styled(Link)
-    `
-        text-decoration: none;
-    `;
-
-const LogoContainer = styled.div
-    `
-        display: flex;
-        flex-direction: columns;
-        padding-top: 12px;
-    `;
-
-const HeavyLogo = styled.div
-    `
-        font-family: "Open Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-weight: 900;
-        font-size: 20px;
-        color: black;
-    `;
-const PlainLogo = styled.div
-    `
-        font-family: "Open Sans", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: 600;
-        font-style: normal;
-        font-size: 22px;
-        color: white;
-        text-decoration: none;
-    `;
-
 export default function Logo() {
     return(
-        <LogoButton reloadDocument to="./" id="navigation-main-logo">
-            <LogoContainer>
-                <HeavyLogo>Rizz@rio<img src={mainLogo} alt="LeatLogo" />
-                </HeavyLogo>
-                <PlainLogo>HEALTH</PlainLogo>
-            </LogoContainer>
-        </LogoButton>
+        <Link reloadDocument to="./" className="no-underline" id="navigation-main-logo">
+            <div className="flex flex-row pt-2.5">
+                <div className="font-sans text-20I text-black flex flex-row content-center items-center">
+                    Rizz@rio
+                    <img className="size-6" src={mainLogo} alt="LeatLogo" />
+                </div>
+                <div className="font-sans text-22I text-white no-underline">
+                    HEALTH
+                </div>
+            </div>
+        </Link>
     )
 };
