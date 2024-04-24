@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
+import { keyframes } from 'styled-components';
+
 const colors = require('tailwindcss/colors');
 
 export default {
@@ -31,6 +33,7 @@ export default {
       'white': '#ffffff',
       'black': '#000000',
       'orange': {
+        main: colors.orange,
         1: '#FFD786',
         2: '#F5E085',
       },
@@ -43,6 +46,7 @@ export default {
         1: '#B1E9A3',
       },
       'green': {
+        main: colors.green,
         1: '#7AC38F',
       },
       'teal': {
@@ -58,12 +62,17 @@ export default {
         1: '#96AFB8',
       },
     },
-    screens: {
-      '5per': '5%',
-      '117px': '117px',
-      '160px': '160px',
-    },
     extend: {
+      keyframes : {
+        slide: {
+          '0%': { 
+            transform :'translate-x-1/2',
+          },
+          '100%': {
+            transform :'-translate-x-1/2',
+          },
+        }
+      },
     },
   },
   plugins: [

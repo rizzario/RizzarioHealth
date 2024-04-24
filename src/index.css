@@ -46,8 +46,7 @@ body {
   overflow-x: hidden;
 }
 textarea,
-input,
-button {
+input {
   font-size: 1rem;
   font-family: inherit;
   border: none;
@@ -121,17 +120,26 @@ form[action$="destroy"] button {
   width: 100%;
   height: 100%;
 }
-
-#root > nav form input[type="search"] {
-  width: 100%;
-  padding-left: 2rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%23999' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: 0.625rem 0.75rem;
-  background-size: 1rem;
-  position: relative;
+/* BEGIN navigation bar header */
+.navigationbar {
+  @apply relative flex flex-col justify-between items-center gap-2 w-[100%] h-auto p-0 bg-green-1 z-10;
+}
+.navigation-div {
+  @apply flex mx-[5%] my-0 w-[100%] h-[50px];
+}
+.navigation-link-div {
+  @apply relative w-[55%];
+}
+.navigation-ul {
+  @apply absolute list-none p-0 mx-[4%] my-0;
 }
 
+.maintriangle {
+  @apply pt-1 flex ml-10 absolute bottom-0;
+}
+.subtriangle {
+  @apply w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-b-8;
+}
 .navigation-group-dropdown {
   @apply absolute bg-black min-w-[160px] px-4 py-6 z-10 transition duration-200;
 }
@@ -154,12 +162,31 @@ form[action$="destroy"] button {
   transform: rotate(180deg);
   color: black !important;
 }
-
-.form-loading {
-  @apply bg-none invisible;
+.contact-div {
+  @apply relative flex w-[45%] mt-[2px];
+}
+.form-search {
+  @apply absolute flex justify-center items-center content-end gap-1 transition-all duration-300 right-[15%];
 }
 .form-disp {
-  @apply visible;
+  @apply w-[85%];
+}
+.form-hide {
+  @apply w-0;
+}
+#root > nav form input[type="search"] {
+  padding-left: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%23999' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.625rem 0.75rem;
+  background-size: 1rem;
+  position: relative;
+}
+.input-hide {
+  @apply bg-none invisible w-0;
+}
+.input-disp {
+  @apply visible w-[100%];
 }
 
 .imagesearch {
@@ -171,6 +198,61 @@ form[action$="destroy"] button {
 .crossLogo {
   @apply bg-[url("./src/Images/cross.png")];
 }
+
+/* END navigation bar header */
+
+/* BEGIN top pick section */
+
+.carousel-section {
+  @apply mt-8;
+}
+.carousel-main-div {
+  @apply relative w-[90%] m-auto;
+}
+.carousel-wrapper {
+  @apply relative h-56 rounded-lg overflow-hidden md:h-96;
+  /* flex shrink-0 flex-grow flex-nowrap justify-around items-stretch */
+}
+.carousel-item-div {
+  @apply invisible w-auto;
+  
+}
+.active-carousel {
+  @apply visible;
+}
+.carousel-item-banner {
+  @apply transition-all duration-500 block absolute w-full h-full object-cover translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  
+}
+.active-image {
+  @apply -translate-x-1/2;
+}
+.carousel-slidertab {
+  @apply absolute z-20 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse;
+}
+.carousel-sliderbutton {
+  @apply bg-white rounded-full w-3 h-3;
+}
+.carousel-sliderbutton.active {
+  @apply bg-green-1;
+}
+.carousel-sliderctrlbutton {
+  @apply absolute top-[45%] end-0 z-30 flex items-center justify-center px-4 cursor-pointer rounded-full h-[50px] w-[50px] bg-white hover:bg-grey-1 focus:outline-none active:bg-orange-1;
+}
+.carousel-sliderctrlbutton.active {
+  @apply bg-green-1 border-solid border-2 border-green-main-800;
+}
+#button-left {
+  @apply left-0 ml-5;
+}
+#button-right {
+  @apply right-0 mr-5;
+}
+.carousel-sliderctrlbutton-span {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-full;
+}
+
+/* END top pick section */
 
 #addnew {
   display: flex;

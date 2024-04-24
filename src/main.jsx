@@ -22,22 +22,35 @@ import EditContact, {
 import { 
   action as destroyAction
 } from "./pages/contact/destroy";
-import Index from './routes/index';
-import Navigation, {
+import Index from './pages/index';
+import NavigationHeader, {
   // loader as navigationLoader,
-} from './components/layout/Navigation';
+} from './components/layout/NavigationHeader';
+
+const ToppickBanner = React.lazy(() => import("./components/layout/ToppickCarousel"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route
         path='/'
-        element={<Navigation />}
+        element={<NavigationHeader />}
         // loader={navigationLoader}
         errorElement={<ErrorPage />}
       >
-        <Route errorElement={<ErrorPage />}>
-          <Route
+        <Route 
+          errorElement={<ErrorPage />}
+        >
+          <Route 
+            path='/'
+            element={<ToppickBanner />}
+          >
+            <Route
+              index='true'
+              element={<Index />}
+            />
+          </Route>
+          {/* <Route
             path='/'
             element={<Addnew />}
             loader={addnewLoader}
@@ -66,7 +79,7 @@ const router = createBrowserRouter(
                 action={destroyAction}
               />
             </Route>
-          </Route>
+          </Route> */}
         </Route>
       </Route>
     </>
