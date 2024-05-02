@@ -58,7 +58,8 @@ export default {
       'cyan': {
         1: '#2DD8FF',
       },
-      'grey': {
+      'gray': {
+        main: colors.gray,
         1: '#96AFB8',
       },
     },

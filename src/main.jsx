@@ -31,25 +31,43 @@ const ToppickBanner = React.lazy(() => import("./components/layout/ToppickCarous
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route
-        path='/'
-        element={<NavigationHeader />}
-        // loader={navigationLoader}
-        errorElement={<ErrorPage />}
-      >
-        <Route 
-          errorElement={<ErrorPage />}
-        >
-          <Route 
-            path='/'
-            element={<ToppickBanner />}
-          >
-            <Route
-              index='true'
-              element={<Index />}
-            />
-          </Route>
+    <Route
+      path='/'
+      index
+      element={
+        <React.Suspense fallback={<>...</>}>
+          <Index />
+        </React.Suspense>
+      }
+      errorElement={<ErrorPage />}
+    >
+
+    </Route>
+  )
+);
+
+// const router = createBrowserRouter(
+//   createRoutesFromElements(
+//     <>
+//       <Route
+//         path='/'
+//         element={<NavigationHeader />}
+//         // loader={navigationLoader}
+//         errorElement={<ErrorPage />}
+//       >
+//         <Route 
+//           errorElement={<ErrorPage />}
+//         >
+//           <Route 
+//             path='/'
+//             element={<ToppickBanner />}
+//           >
+//             <Route
+//               path='/'
+//               element={<Index />}
+//             />
+//           </Route>
+          
           {/* <Route
             path='/'
             element={<Addnew />}
@@ -80,11 +98,11 @@ const router = createBrowserRouter(
               />
             </Route>
           </Route> */}
-        </Route>
-      </Route>
-    </>
-  )
-);
+//          </Route>
+//        </Route>
+//      </>
+//    )
+//  );
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

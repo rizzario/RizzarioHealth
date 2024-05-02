@@ -1,27 +1,9 @@
-import { useRouteError, useNavigate, Link, } from "react-router-dom";
-import styled from "styled-components";
+import { 
+  useRouteError, 
+  useNavigate, 
+  Link, 
+} from "react-router-dom";
 
-const ErrorHandle = styled.div
-  `
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  `;
-
-const HomeButton = styled.div
-  `
-    background-color: var(--green);
-    padding: 10px;
-    border-radius: 10px;
-  `;
-
-const HeaderAlert = styled.h1
-  `
-    font-size: 72px;
-  `;
 
 export default function ErrorPage() {
 
@@ -31,16 +13,16 @@ export default function ErrorPage() {
 
   return (
     <>
-      <ErrorHandle>
-        <HeaderAlert>Oops!</HeaderAlert>
+      <div className="flex flex-col items-center justify-center w-full h-full">
+        <h1 className="text-7xl">Oops!</h1>
         <p>Sorry, an unexpected error has occurred.</p>
         <p>
           <i>{error.statusText || error.message}</i>
         </p>
-        <Link reloadDocument to="./" >
-          <HomeButton>Home Page</HomeButton>
+        <Link reloadDocument to="./" className="p-[10px] rounded-[10px] bg-green-1 font-sans no-underline text-white hover:text-black outeline-none shadow-none">
+          Home Page
         </Link>
-      </ErrorHandle>
+      </div>
     </>
   );
 }

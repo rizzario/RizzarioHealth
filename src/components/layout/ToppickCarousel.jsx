@@ -1,41 +1,43 @@
-import {
-    Outlet,
-} from "react-router-dom";
 import { 
     useState,
     useEffect,
     Suspense,
 } from "react";
-import { toppickBannerData } from "./top/ToppickBanner";
+import { toppickBannerData } from "./carousel/ToppickBanner";
 
 export default function ToppickCarousel() {
 
     const[currentIndex, setCurrentIndex] = useState(0);
     const[activeslideBtn, setActiveSlideBtn] = useState(null);
     const[mouseOver, setMouseOver] = useState(false);
+    let timer;
 
     useEffect(() => {
         if(!mouseOver) {
-            const timer = setInterval(() => {
+            timer = setInterval(() => {
                 setCurrentIndex((prev) => (prev + 1) % toppickBannerData.length);
             }, 5000);
 
             return () => clearInterval(timer);
         }
-    }, [mouseOver]);
+    }, [mouseOver,setCurrentIndex,setActiveSlideBtn]);
 
     const handleSlideButtonClick = (buttonId) => {
         setActiveSlideBtn(buttonId);
+        clearInterval(timer);
     };
     const handleNext = (val) => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % toppickBannerData.length);
+        clearInterval(timer);
     };
     const handlePrev = (val) => {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + toppickBannerData.length) % toppickBannerData.length);
+        clearInterval(timer);
     };
 
     if(currentIndex > toppickBannerData.length - 1) {
         setCurrentIndex(0);
+        clearInterval(timer);
     };
 
     return(
@@ -93,7 +95,6 @@ export default function ToppickCarousel() {
                     </button>
                 </div>
             </section>
-            <Outlet />
         </Suspense>
     );
 };

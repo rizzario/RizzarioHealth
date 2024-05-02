@@ -4,7 +4,6 @@ import {
     useLoaderData,
     useNavigation,
     useSubmit,
-    Outlet,
 } from "react-router-dom";
 import { 
     useState,
@@ -91,7 +90,6 @@ export default function NavigationHeader() {
                     </div>
                 </div>
             </nav>
-            <Outlet />
         </Suspense>
     );
 };

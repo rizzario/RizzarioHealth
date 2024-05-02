@@ -10,7 +10,7 @@ html {
   --teal: #88E0D0;
   --lightcyan: #C7EEFF;
   --cyan: #2DD8FF;
-  --grey: #96AFB8;
+  --gray: #96AFB8;
   --clay: #A2AF9F;
   --limegreen: #D2E690;
   --loworange: #F5E085;
@@ -115,11 +115,10 @@ form[action$="destroy"] button {
   white-space: nowrap;
   border-width: 0;
 }
-
 #root {
-  width: 100%;
-  height: 100%;
+  @apply w-full h-full scroll-smooth;
 }
+
 /* BEGIN navigation bar header */
 .navigationbar {
   @apply relative flex flex-col justify-between items-center gap-2 w-[100%] h-auto p-0 bg-green-1 z-10;
@@ -237,7 +236,7 @@ form[action$="destroy"] button {
   @apply bg-green-1;
 }
 .carousel-sliderctrlbutton {
-  @apply absolute top-[45%] end-0 z-30 flex items-center justify-center px-4 cursor-pointer rounded-full h-[50px] w-[50px] bg-white hover:bg-grey-1 focus:outline-none active:bg-orange-1;
+  @apply absolute top-[45%] end-0 z-30 flex items-center justify-center px-4 cursor-pointer rounded-full h-[50px] w-[50px] bg-white hover:bg-gray-1 focus:outline-none active:bg-orange-1;
 }
 .carousel-sliderctrlbutton.active {
   @apply bg-green-1 border-solid border-2 border-green-main-800;
@@ -253,6 +252,31 @@ form[action$="destroy"] button {
 }
 
 /* END top pick section */
+
+/* BEGIN Highlight style one section */
+.highlight-section {
+  @apply mt-8;
+}
+.sub-header {
+  @apply w-[90%] mb-2 flex text-center items-center justify-between align-middle m-auto border-b-2 border-solid border-gray-1;
+}
+.highlight-container {
+  @apply flex flex-wrap justify-center content-evenly gap-10 my-4;
+}
+.image-detail-group {
+  @apply relative w-48 h-48 rounded-lg border-solid border-2 border-gray-1 overflow-hidden cursor-pointer hover:border-gray-main-700 hover:shadow-lg hover:shadow-gray-main-500/40;
+}
+
+.image-card {
+  @apply w-48 h-48 m-auto overflow-hidden transition-all duration-200;
+}
+.zoom {
+  @apply scale-110;
+}
+.image-desc {
+  @apply absolute bottom-0 bg-white w-full text-center;
+}
+/* END Highlight style one section */
 
 #addnew {
   display: flex;
