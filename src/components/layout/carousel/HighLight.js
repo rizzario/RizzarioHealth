@@ -1,29 +1,39 @@
-import { 
-    fitness, 
-    diet,
-    meditate,
-    mental,
-} from "../../../Images/images";
+import * as url from "../../../Images/images";
 
 export const highlightOneData = [
     {
-        image: `${fitness}`,
+        image: `${url.fitness}`,
         title: "Fitness",
         description: "Fitness & Exercise",
     },
     {
-        image: `${diet}`,
+        image: `${url.diet}`,
         title: "Diet",
         description: "Diet & Healthy",
     },
     {
-        image: `${meditate}`,
+        image: `${url.meditate}`,
         title: "Meditation",
         description: "Meditation",
     },
     {
-        image: `${mental}`,
+        image: `${url.mental}`,
         title: "Mental",
         description: "Mental Health",
+    },
+];
+
+export const highlightTwoData = [
+    {
+        image: `${url.bmi}`,
+        title: "BMI Calculator",
+    },
+    {
+        image: `${url.bmr}`,
+        title: "BMR Calculator",
+    },
+    {
+        image: `${url.oval}`,
+        title: "Ovulation Calculator",
     },
 ];

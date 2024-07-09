@@ -48,12 +48,16 @@ export default {
       'green': {
         main: colors.green,
         1: '#7AC38F',
+        2: '#7db9af',
+        3: '#83d9bf',
+        4: '#a6ded2',
       },
       'teal': {
         1: '#88E0D0',
       },
       'lightcyan': {
-        1: '#C7EEFF',
+        1: '#f1f7fd',
+        2: '#C7EEFF',
       },
       'cyan': {
         1: '#2DD8FF',
@@ -72,7 +76,15 @@ export default {
           '100%': {
             transform :'-translate-x-1/2',
           },
-        }
+        },
+        rotation: {
+          '0%': {
+            transform :'rotate(0deg)',
+          },
+          '100%': {
+            transform :'rotate(360deg)',
+          },
+        },
       },
     },
   },

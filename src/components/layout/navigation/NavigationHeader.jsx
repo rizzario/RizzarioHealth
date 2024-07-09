@@ -10,11 +10,11 @@ import {
     Suspense,
 } from "react";
 import styled from "styled-components";
-import Logo from "../mainlogo/Logo";
-import { menuItemsData } from "./navigation/MenuItemsData";
-import MenuItems from "./navigation/MenuItems";
-import { getContacts } from "../../pages/contact/contacts";
-import isPropValid from '@emotion/is-prop-valid';
+import Logo from "../../mainlogo/Logo";
+import { menuItemsData } from "./MenuItemsData";
+import MenuItems from "./MenuItems";
+import { getContacts } from "../../../pages/contact/contacts";
+import { SectionLoad } from "../../../pages/loading/loading";
 
 // export async function loader( {request} ) {
 //     const url = new URL(request.url);
@@ -22,12 +22,6 @@ import isPropValid from '@emotion/is-prop-valid';
 //     const details = await getContacts(s);
 //     return { details};
 // }
-function shouldForwardProp(propName, target) {
-    if (typeof target === "string") {
-        return isPropValid(propName);
-    }
-    return true;
-}
 
 export default function NavigationHeader() {
     // const { s } = useLoaderData();
@@ -43,7 +37,7 @@ export default function NavigationHeader() {
     
 
     return(
-        <Suspense fallback={<></>}>
+        <Suspense fallback={<SectionLoad />}>
             <nav className="navigationbar" >
                 <Logo />
                 <div className="navigation-div" id="navigation-tab">

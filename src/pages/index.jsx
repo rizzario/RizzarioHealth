@@ -3,10 +3,10 @@ import {
   Outlet,
 } from "react-router-dom";
 
-const NavigationBar = React.lazy(() => import("../components/layout/NavigationHeader"));
-const ToppickBanner = React.lazy(() => import("../components/layout/ToppickCarousel"));
-const HighLight_One = React.lazy(() => import("../components/layout/HighLightOne"));
-const HighLight_Two = React.lazy(() => import("../components/layout/HighLightTwo"));
+const NavigationBar = React.lazy(() => import("../components/layout/navigation/NavigationHeader"));
+const ToppickBanner = React.lazy(() => import("../components/layout/carousel/ToppickCarousel"));
+const HighLight_One = React.lazy(() => import("../components/layout/carousel/HighLightOne"));
+const HighLight_Two = React.lazy(() => import("../components/layout/carousel/HighLightTwo"));
 
 export default function Index() {
     return (

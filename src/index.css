@@ -118,10 +118,15 @@ form[action$="destroy"] button {
 #root {
   @apply w-full h-full scroll-smooth;
 }
+/* BEGIN section loader */
+.loader {
+  @apply w-12 h-12 rounded-[50%] border-8 border-y-gray-main-700 border-x-transparent border-solid animate-[rotation_1s_linear_infinite];
+}
+/* END section loader */
 
 /* BEGIN navigation bar header */
 .navigationbar {
-  @apply relative flex flex-col justify-between items-center gap-2 w-[100%] h-auto p-0 bg-green-1 z-10;
+  @apply relative flex flex-col justify-between items-center gap-2 w-[100%] h-auto p-0 bg-green-3 z-10;
 }
 .navigation-div {
   @apply flex mx-[5%] my-0 w-[100%] h-[50px];
@@ -213,19 +218,16 @@ form[action$="destroy"] button {
   /* flex shrink-0 flex-grow flex-nowrap justify-around items-stretch */
 }
 .carousel-item-div {
-  @apply invisible w-auto;
-  
-}
-.active-carousel {
-  @apply visible;
+  @apply absolute w-full h-full flex flex-nowrap flex-row transition-opacity opacity-0 duration-500 ;
 }
 .carousel-item-banner {
-  @apply transition-all duration-500 block absolute w-full h-full object-cover translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
-  
+  @apply block absolute w-full h-full object-cover;
+  /* translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 */
 }
-.active-image {
-  @apply -translate-x-1/2;
+.active-carousel {
+  @apply !opacity-100;
 }
+
 .carousel-slidertab {
   @apply absolute z-20 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse;
 }
@@ -278,6 +280,17 @@ form[action$="destroy"] button {
 }
 /* END Highlight style one section */
 
+/* BEGIN Highlight style two section */
+.highlighttwo-container {
+  @apply grid content-between gap-2 relative w-[90%] m-auto h-[550px];
+} 
+.card-container {
+  @apply flex flex-row justify-start items-start w-[40%] h-auto border-solid border-2 border-gray-1 rounded-xl no-underline overflow-hidden;
+}
+.image-bookmark {
+  @apply w-40 h-40 p-2 m-2 overflow-hidden transition-all duration-200;
+}
+/* END Highlight style two section */
 #addnew {
   display: flex;
   height: 100%;

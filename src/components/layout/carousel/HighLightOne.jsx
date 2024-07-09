@@ -2,7 +2,7 @@ import {
     Suspense,
     useState,
 } from "react";
-import { highlightOneData } from "./carousel/HighLight";
+import { highlightOneData } from "./HighLight";
 
 export default function HighLightOne() {
     
